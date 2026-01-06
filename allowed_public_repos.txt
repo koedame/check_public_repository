@@ -3,3 +3,6 @@
 # 例:
 # my-oss-library
 # public-docs
+webextension-syncroom-plus
+webextension-chordwiki-plus
+zerotimer.koeda.me
