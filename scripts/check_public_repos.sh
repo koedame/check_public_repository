@@ -130,7 +130,7 @@ PAYLOAD=$(cat <<EOF
       "elements": [
         {
           "type": "mrkdwn",
-          "text": "意図的な公開であれば \`allowed_public_repos.txt\` にリポジトリ名を追加してください"
+          "text": "意図的な公開であれば <https://github.com/koedame/check_public_repository|こちら> の \`allowed_public_repos.txt\` にリポジトリ名を追加してください"
         }
       ]
     }
