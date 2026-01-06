@@ -107,7 +107,7 @@ PAYLOAD=$(cat <<EOF
       "type": "header",
       "text": {
         "type": "plain_text",
-        "text": ":warning: 未許可のパブリックリポジトリを検出",
+        "text": ":warning: 許可リストに含まれていないリポジトリが公開されています",
         "emoji": true
       }
     },
