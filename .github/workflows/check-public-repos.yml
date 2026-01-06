@@ -16,4 +16,5 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           ORG_NAME: ${{ vars.ORG_NAME }}
+          CONFIG_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
         run: bash scripts/check_public_repos.sh

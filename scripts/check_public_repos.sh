@@ -12,6 +12,11 @@ if [[ -z "${SLACK_WEBHOOK_URL:-}" ]]; then
   exit 1
 fi
 
+if [[ -z "${CONFIG_REPO_URL:-}" ]]; then
+  echo "Error: CONFIG_REPO_URL is not set"
+  exit 1
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ALLOWLIST_FILE="${SCRIPT_DIR}/../allowed_public_repos.txt"
 
@@ -130,7 +135,7 @@ PAYLOAD=$(cat <<EOF
       "elements": [
         {
           "type": "mrkdwn",
-          "text": "意図的な公開であれば <https://github.com/koedame/check_public_repository|こちら> の \`allowed_public_repos.txt\` にリポジトリ名を追加してください"
+          "text": "意図的な公開であれば <${CONFIG_REPO_URL}|こちら> の \`allowed_public_repos.txt\` にリポジトリ名を追加してください"
         }
       ]
     }
