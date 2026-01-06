@@ -1,0 +1,5 @@
+# 公開OKのリポジトリ一覧
+# 1行1リポジトリで記載（リポジトリ名のみ、Organization名は不要）
+# 例:
+# my-oss-library
+# public-docs
