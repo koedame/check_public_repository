@@ -88,7 +88,56 @@ done <<< "${PUBLIC_REPOS}"
 UNAUTHORIZED_REPOS=$(echo -n "${UNAUTHORIZED_REPOS}" | sed '/^$/d')
 
 if [[ -z "${UNAUTHORIZED_REPOS}" ]]; then
-  echo "All public repositories are in the allowlist. No action needed."
+  echo "All public repositories are in the allowlist."
+
+  # 日次レポートの場合のみ通知
+  if [[ "${DAILY_REPORT:-false}" == "true" ]]; then
+    echo "Sending daily report..."
+
+    PAYLOAD=$(cat <<EOF
+{
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": ":white_check_mark: パブリックリポジトリの日次チェック完了",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "すべてのパブリックリポジトリが許可リストに含まれています。問題は検出されませんでした。"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "<https://github.com/orgs/${ORG_NAME}/repositories?type=public|Organization のリポジトリ一覧を確認>"
+      }
+    }
+  ]
+}
+EOF
+)
+
+    HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+      -X POST \
+      -H "Content-Type: application/json" \
+      -d "${PAYLOAD}" \
+      "${SLACK_WEBHOOK_URL}")
+
+    if [[ "${HTTP_STATUS}" == "200" ]]; then
+      echo "Daily report sent successfully."
+    else
+      echo "Failed to send daily report. HTTP status: ${HTTP_STATUS}"
+      exit 1
+    fi
+  fi
+
   exit 0
 fi
 

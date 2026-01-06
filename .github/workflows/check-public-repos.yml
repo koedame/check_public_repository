@@ -3,6 +3,7 @@ name: Check Public Repositories
 on:
   schedule:
     - cron: '*/10 * * * *'  # 10分ごとに実行
+    - cron: '0 9 * * *'     # 毎日18:00 JST (09:00 UTC) に日次レポート
   workflow_dispatch:        # 手動実行用
 
 jobs:
@@ -17,4 +18,5 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           ORG_NAME: ${{ vars.ORG_NAME }}
           CONFIG_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+          DAILY_REPORT: ${{ github.event.schedule == '0 9 * * *' }}
         run: bash scripts/check_public_repos.sh
