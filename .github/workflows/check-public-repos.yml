@@ -2,7 +2,7 @@ name: Check Public Repositories
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # 10分ごとに実行
+    - cron: '*/5 * * * *'   # 5分ごとに実行
     - cron: '0 9 * * *'     # 毎日18:00 JST (09:00 UTC) に日次レポート
   workflow_dispatch:        # 手動実行用
 
