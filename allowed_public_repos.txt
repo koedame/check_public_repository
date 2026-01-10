@@ -12,3 +12,4 @@ neumosync
 tamiya_universal_plate_generator
 webextension-nanokvm-capture
 check_public_repository
+p2paudiosession
