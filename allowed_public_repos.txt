@@ -5,11 +5,15 @@
 # public-docs
 webextension-syncroom-plus
 webextension-chordwiki-plus
-zerotimer.koeda.me
-meditation.koeda.me
 rails-mermaid_erd
 neumosync
 tamiya_universal_plate_generator
 webextension-nanokvm-capture
 check_public_repository
-p2paudiosession
+chordsketch
+homebrew-tap
+scoop-bucket
+mermaid-erd-cli
+staffpaper
+jamuru-client
+usbmeter
