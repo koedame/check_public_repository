@@ -6,12 +6,15 @@ on:
     - cron: '0 9 * * *'     # 毎日18:00 JST (09:00 UTC) に日次レポート
   workflow_dispatch:        # 手動実行用
 
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Check public repos and notify Slack
         env:
