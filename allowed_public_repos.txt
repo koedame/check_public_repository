@@ -17,3 +17,5 @@ mermaid-erd-cli
 staffpaper
 jamuru-client
 usbmeter
+fdm-minimal-design-skill
+sbc-frame-brackets
